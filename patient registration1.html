@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Patient Registration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background:linear-gradient(to left,rgb(162, 221, 255),rgb(239, 244, 255));
+            padding: 20px;
+        }
+
+       
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 80vh;
+        }
+
+        /* Navbar Styles */
+        nav.container-fluid {
+            width: 100%;
+            background-color:transparent;
+           box-shadow: none;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+           border-bottom: none;
+            top: 0;
+            z-index: 1000; 
+            border:none;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+        }
+
+        nav a {
+            color: #046d70;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px 10px;
+            background: none; 
+
+        }
+
+        nav a:hover {
+            background-image: linear-gradient(to left, rgb(50, 186, 245), rgb(106, 249, 59));
+            border-radius: 25px;
+            padding: 5px 10px;
+        }
+
+        .sign-in-btn {
+            background: linear-gradient(to left, rgb(50, 186, 245), rgb(106, 249, 59));
+            color: rgb(8, 92, 110);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 1.3rem;
+        }
+
+        /* Main layout styles for form */
+        .registration-wrapper {
+            display: flex;
+            max-width: 1000px;
+            width: 100%;
+            background-color: white;
+            box-shadow: 10px 10px 20px rgb(117, 114, 114);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: auto;
+        }
+
+        .image-container {
+            flex: 1;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .registration-container {
+            flex: 1;
+            padding: 40px;
+            background-color: white;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            flex: 1;
+            margin-right: 15px;
+        }
+
+        .input-group:last-child {
+            margin-right: 0;
+        }
+
+        .input-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group textarea:focus {
+            border-color: #007bff;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to left, rgb(31, 195, 240), rgb(25, 69, 105));
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: linear-gradient(rgb(245, 254, 254), rgb(0, 255, 21));
+            color:black;
+        }
+
+        /* Media Queries for Mobile */
+        @media (max-width: 900px) {
+            .registration-wrapper {
+                flex-direction: column;
+            }
+
+            .image-container {
+                height: 300px;
+            }
+
+            .registration-container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+
+            .input-group label,
+            .input-group input,
+            .input-group select,
+            .input-group textarea {
+                font-size: 13px;
+            }
+
+            .btn {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- Navigation Bar -->
+        <nav class="container-fluid">
+            <ul>
+                <img class="logo" src="logo2.png" height="84px" width="105px">
+                <li><strong>Medicro</strong></li>
+            </ul>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Doctor</a></li>
+                <li><a href="#">Service</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><button class="sign-in-btn">Sign in</button></li>
+            </ul>
+        </nav>
+
+        <!-- Form Container -->
+        <div class="registration-wrapper">
+            <div class="image-container">
+                <img src="reg img.png" alt="Registration Illustration">
+            </div>
+            <div class="registration-container">
+                <h2>Patient Registration</h2>
+                <form id="patient-registration-form" method="POST" enctype="multipart/form-data">
+                    
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="first_name">First Name</label>
+                            <input type="text" id="first_name" name="first_name" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" id="last_name" name="last_name" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="date_of_birth">Date of Birth</label>
+                            <input type="date" id="date_of_birth" name="date_of_birth" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender">
+                                <option value="">Select gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="phone_number">Phone Number</label>
+                            <input type="text" id="phone_number" name="phone_number" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="confirm_password">Confirm Password</label>
+                            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="address">Address</label>
+                            <textarea id="address" name="address" rows="4" placeholder="Enter your address" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="emergency_contact_name">Emergency Contact Name</label>
+                            <input type="text" id="emergency_contact_name" name="emergency_contact_name" placeholder="Enter emergency contact name" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="emergency_contact_phone">Emergency Contact Phone</label>
+                            <input type="text" id="emergency_contact_phone" name="emergency_contact_phone" placeholder="Enter emergency contact phone" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="profile_picture">Profile Picture</label>
+                            <input type="file" id="profile_picture" name="profile_picture">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      
+        
+    </script>
+</body>
+</html>
